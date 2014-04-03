@@ -203,10 +203,6 @@ void loop(){
   {
     moveForward(); 
   }
-  
-Serial.println(totalCount);
-Serial.print("                ");
-Serial.println(analogRead(3));
 }
 
 void pickup(){
@@ -380,7 +376,7 @@ void nextInstruction(){
 
       moveForward();
 
-      while (countDifference < 8000){
+      while (countDifference < 2400){
         countDifference = totalCount-currentCount;
         moveForward();
       }
