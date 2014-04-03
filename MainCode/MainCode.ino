@@ -73,6 +73,8 @@ boolean ignore = true; //////////////////////////////MUST BE FALSE//////////////
 //Instructions that the robot will follow, enter the following commands in the list
 //"stop","straight","left","right","finish"
 String instructionList[] = {
+  "left",
+  "right",
   "right",
   "left"};
 
@@ -191,17 +193,14 @@ void loop(){
       }
     }
 
-    //Serial.println("Hallway detected.");
     totalCount = 0;
     nextInstruction();
     ignore = true;
     totalCount = 0;
     clearEncoder();
-    //referenceTimer = millis();
   }
   else//Go straight using compass and PID
   {
-    //Serial.println("No Hallway");
     moveForward(); 
   }
   
@@ -491,58 +490,6 @@ void rotate(char* rotationDir){ //rotate the robot|    rotationDir: 0 turns cc, 
 
   tapBrake(75,300);
 }
-
-
-
-//void updateEncoder(){
-//
-//  //Serial.print("TIME CHANGE IS:    ");
-//  //Serial.println(timeChange);
-//
-//
-//  leftEncoderValue = analogRead(2);
-//  rightEncoderValue = analogRead(3);
-//
-//  Serial.print("leftEncoderValue: ");
-//  Serial.println(leftEncoderValue);
-//
-//  Serial.print("                         rightEncoderValue: ");
-//  Serial.println(rightEncoderValue);
-//
-//  if (leftEncoderValue < 350){ //Min value is 0 and max value is 800, so state chance can be done at 500.
-//    leftEncoderCurrentState = 1;
-//  }
-//  else{
-//    leftEncoderCurrentState = 0;
-//  }
-//
-//  if (leftEncoderCurrentState != leftEncoderPreviousState){
-//    leftEncoderCounter ++;
-//    totalCount ++;
-//
-//    //Serial.print("                                                    leftEncoderCounter: ");
-//    //Serial.println(leftEncoderCounter);
-//  }
-//
-//  if (rightEncoderValue < 350){ //Min value is 0 and max value is 800, so state chance can be done at 500.
-//    rightEncoderCurrentState = 1;
-//  }
-//  else{
-//    rightEncoderCurrentState = 0;
-//  }
-//
-//  if (rightEncoderCurrentState != rightEncoderPreviousState){
-//    rightEncoderCounter ++;
-//    totalCount ++;
-//
-//
-//    //Serial.print("                                                                                                     rightEncoderCounter: ");
-//    //Serial.println(rightEncoderCounter);
-//  }
-//
-//  leftEncoderPreviousState = leftEncoderCurrentState;
-//  rightEncoderPreviousState = rightEncoderCurrentState;
-//}
 
 int getRightEncoderCounter(){
   int a = rightEncoderCounter;
